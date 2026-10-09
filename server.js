@@ -103,7 +103,7 @@ app.get('/search', async (req, res) => {
   }
 });
 
-// Halaman Detail Film
+// Halaman Detail Film (Format Judul SEO Baru)
 app.get('/movie/:id', async (req, res) => {
   try {
     const movieId = req.params.id;
@@ -121,7 +121,12 @@ app.get('/movie/:id', async (req, res) => {
       similar: similar.results || []
     });
 
-    res.send(renderLayout(movie.title || 'Detalii Film', content));
+    // Format judul sesuai permintaan: [Judul Film] ([Tahun]) 4K Filmul Vezi Online Subtitrat in Română [HD]
+    const movieTitle = movie.title || 'Detalii Film';
+    const movieYear = movie.release_date ? movie.release_date.split('-')[0] : '2026';
+    const customTitle = `${movieTitle} (${movieYear}) 4K Filmul Vezi Online Subtitrat in Română [HD]`;
+
+    res.send(renderLayout(customTitle, content));
   } catch (err) {
     console.error('Movie Detail Error:', err);
     res.status(404).send('Filmul nu a fost găsit.');
@@ -173,5 +178,5 @@ app.get('/actor/:id', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Serverul FilmeStar Frulează pe portul ${PORT}`);
+  console.log(`Serverul FilmeStar rulează pe portul ${PORT}`);
 });

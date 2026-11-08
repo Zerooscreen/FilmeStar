@@ -11,7 +11,7 @@ const {
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-const DOMAIN = 'https://filmestar.up.railway.app'; // Sesuaikan dengan domain Railway Anda
+const DOMAIN = 'https://filmestar-g96v2dg8.back4.app';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

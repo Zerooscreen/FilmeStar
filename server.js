@@ -11,7 +11,7 @@ const {
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-const DOMAIN = 'https://filmestar-g96v2dg8.back4.app';
+const DOMAIN = 'https://filmestar.vercel.app';
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
